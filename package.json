@@ -1,0 +1,29 @@
+{
+  "name": "@mahsumurebe/journalctl",
+  "version": "1.0.0",
+  "description": "TypeScript library of the journalctl tool included in Linux distributions.",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepare": "rm -rf lib/* && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahsumurebe/journalctl.git"
+  },
+  "keywords": [
+    "journalctl",
+    "journald",
+    "systemd",
+    "cli"
+  ],
+  "author": "Mahsum UREBE <info@mahsumurebe.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mahsumurebe/journalctl/issues"
+  },
+  "homepage": "https://github.com/mahsumurebe/journalctl#readme",
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@types/node": "^13.9.3"
+  }
+}

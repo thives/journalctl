@@ -1,6 +1,6 @@
 {
   "name": "@mahsumurebe/journalctl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript library of the journalctl tool included in Linux distributions.",
   "main": "lib/index.js",
   "scripts": {

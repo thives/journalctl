@@ -58,6 +58,15 @@ class Decoder {
 
         if (!this.str && c === '}' && --this.obj === 0) {
             const parsed = JSON.parse(this.data);
+            let message: number[] | string = parsed.MESSAGE;
+            if (message instanceof Array) {
+                // Convert char codes to string
+                message = String.fromCharCode.apply(null, message) as string;
+
+                // Replace ANSI escape code with regex
+                const r = /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
+                message = message.replace(r, '');
+            }
             this.cb({
                 priority: parsed.PRIORITY,
                 syslogFacility: parsed.SYSLOG_FACILITY,
@@ -69,7 +78,7 @@ class Decoder {
                 messageId: parsed.MESSAGE_ID,
                 codeLine: parsed.CODE_LINE,
                 unit: parsed.UNIT,
-                message: parsed.MESSAGE,
+                message: message,
                 invocationId: parsed.INVOCATION_ID,
             });
         }

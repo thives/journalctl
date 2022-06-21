@@ -24,7 +24,8 @@ const journalctl = new Journalctl([opts])
 The optional object ``object`` can be have the following properties.
 
 - ``identifier``: Show entries with the specified syslog identifier
-- ``unit``: Show logs from the specified unit
+- ``units``: Show logs from the specified unit(s)
+- ``userUnits``: Show logs from the specified user unit(s)
 - ``all``: Show all fields, including long and unprintable
 - ``lines``: Show entries with the specified syslog identifier
 - ``since``: Show entries not older than the specified date

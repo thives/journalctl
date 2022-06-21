@@ -8,7 +8,7 @@ export interface IOptions {
     utc?: boolean;
     identifier?: string;
     units?: string | string[];
-
+    userUnits?: string | string[];
 }
 
 export interface IJournalEvent {
@@ -148,6 +148,14 @@ export default class Journalctl extends EventEmitter {
                 args.push('-u', unit);
             }
         }
+        if (options.userUnits && options.userUnits.length > 0) {
+            if (!(options.userUnits instanceof Array)) {
+                options.userUnits = [options.userUnits];
+            }
+            for (const userUnit of options.userUnits) {
+                args.push('--user-unit', userUnit);
+            }
+        }
 
         this.sp = spawn('journalctl', args);
 
@@ -160,7 +168,7 @@ export default class Journalctl extends EventEmitter {
 
     stop(signal?: NodeJS.Signals | number): Promise<number> {
         return new Promise<number>((resolve, reject) => {
-            const timeout = setTimeout(() => resolve(), 5000);
+            const timeout = setTimeout(() => resolve(0), 5000);
             this.sp.on('exit', code => {
                 clearTimeout(timeout);
                 resolve(code);

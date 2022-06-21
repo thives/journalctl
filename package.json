@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mahsumurebe/journalctl.git"
+    "url": "git+https://github.com/thives/journalctl.git"
   },
   "keywords": [
     "journalctl",
